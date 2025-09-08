@@ -1,8 +1,11 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react"; // lucide-react icons
+import { Menu, X, LogOut } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, logout } = useAuth();
 
   return (
     <nav className="bg-white sticky top-0 z-50">
@@ -40,12 +43,33 @@ export default function Navbar() {
 
             {/* Desktop Buttons */}
             <div className="hidden md:flex items-center space-x-3">
-              <button className="px-4 py-1.5 text-sm border border-gray-400 rounded-md hover:bg-gray-100 transition">
-                Log in
-              </button>
-              <button className="px-4 py-1.5 text-sm bg-black text-white rounded-md hover:bg-gray-800 transition">
-                Register
-              </button>
+              {user ? (
+                <div className="flex items-center space-x-3">
+                  <span className="text-sm text-gray-700">
+                    Welcome, {user.name} ({user.role})
+                  </span>
+                  <button
+                    onClick={logout}
+                    className="flex items-center px-4 py-1.5 text-sm border border-gray-400 rounded-md hover:bg-gray-100 transition"
+                  >
+                    <LogOut size={16} className="mr-2" />
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <Link to="/login">
+                    <button className="px-4 py-1.5 text-sm border border-gray-400 rounded-md hover:bg-gray-100 transition">
+                      Log in
+                    </button>
+                  </Link>
+                  <Link to="/register">
+                    <button className="px-4 py-1.5 text-sm bg-black text-white rounded-md hover:bg-gray-800 transition">
+                      Register
+                    </button>
+                  </Link>
+                </>
+              )}
             </div>
 
             {/* Mobile menu button */}
@@ -84,12 +108,33 @@ export default function Navbar() {
               Contact
             </a>
             <div className="flex flex-col gap-3 pt-2">
-              <button className="px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-100">
-                Log in
-              </button>
-              <button className="px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800">
-                Register
-              </button>
+              {user ? (
+                <div className="space-y-3">
+                  <div className="text-sm text-gray-700">
+                    Welcome, {user.name} ({user.role})
+                  </div>
+                  <button
+                    onClick={logout}
+                    className="flex items-center justify-center w-full px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-100"
+                  >
+                    <LogOut size={16} className="mr-2" />
+                    Logout
+                  </button>
+                </div>
+              ) : (
+                <>
+                  <Link to="/login">
+                    <button className="w-full px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-100">
+                      Log in
+                    </button>
+                  </Link>
+                  <Link to="/register">
+                    <button className="w-full px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800">
+                      Register
+                    </button>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>
