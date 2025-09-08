@@ -2,15 +2,15 @@ export default function Hero() {
   return (
     <section className="relative bg-gradient-to-r from-blue-50 to-white">
       <div className="max-w-7xl mx-auto px-6 sm:px-10 py-20 grid md:grid-cols-2 gap-12 items-center">
-        
+
         {/* Left Content */}
         <div className="space-y-6">
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight">
             Connect with Your <span className="text-blue-600">Alumni Network</span>
           </h1>
           <p className="text-lg text-gray-600 max-w-lg">
-            Build meaningful connections, gain mentorship, and advance your career 
-            through our powerful alumni platform. From <span className="font-semibold">campus to career</span>, 
+            Build meaningful connections, gain mentorship, and advance your career
+            through our powerful alumni platform. From <span className="font-semibold">campus to career</span>,
             guidance that lasts a lifetime.
           </p>
 
@@ -28,10 +28,12 @@ export default function Hero() {
         {/* Right Illustration */}
         <div className="relative">
           <img
-            src="/image.png" // apni illustration yahan use karo
+            src="/alumni.jpg"
             alt="Alumni Illustration"
-            className="w-full max-w-md mx-auto drop-shadow-lg"
+            className="w-full max-w-md mx-auto drop-shadow-lg rounded-xl"
           />
+
+      
           {/* Decorative element */}
           <div className="absolute -z-10 top-0 left-1/2 -translate-x-1/2 w-72 h-72 bg-blue-100 rounded-full blur-3xl opacity-60"></div>
         </div>
