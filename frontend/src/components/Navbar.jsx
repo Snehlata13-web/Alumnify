@@ -21,12 +21,12 @@ export default function Navbar() {
 
             {/* Desktop Links */}
             <div className="hidden md:flex items-center space-x-8">
-              <a
-                href="#"
+              <Link
+                to="/"
                 className="text-gray-600 hover:text-blue-600 font-medium transition"
               >
                 Home
-              </a>
+              </Link>
               <a
                 href="#"
                 className="text-gray-600 hover:text-blue-600 font-medium transition"
@@ -89,12 +89,12 @@ export default function Navbar() {
       {isOpen && (
         <div className="md:hidden bg-white border border-gray-300 rounded-b-lg shadow-md mt-2 mx-4">
           <div className="px-6 py-4 space-y-4">
-            <a
-              href="#"
+            <Link
+              to="/"
               className="block text-gray-700 hover:text-blue-600 font-medium"
             >
               Home
-            </a>
+            </Link>
             <a
               href="#"
               className="block text-gray-700 hover:text-blue-600 font-medium"
