@@ -13,19 +13,36 @@ const Register = () => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [loading, setLoading] = useState(false);
+  const [isRolePreFilled, setIsRolePreFilled] = useState(false);
 
   const { register } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
     const roleFromUrl = searchParams.get('role');
+    let role = null;
+    let preFilled = false;
     if (roleFromUrl && ['student', 'alumni', 'institution'].includes(roleFromUrl)) {
-      setFormData(prev => ({
-        ...prev,
-        role: roleFromUrl
-      }));
+      role = roleFromUrl;
+      localStorage.setItem('selectedRole', role);
+      preFilled = true;
+    } else {
+      const storedRole = localStorage.getItem('selectedRole');
+      if (storedRole && ['student', 'alumni', 'institution'].includes(storedRole)) {
+        role = storedRole;
+        preFilled = true;
+      }
     }
-  }, [searchParams]);
+    if (!role) {
+      navigate('/role-selection');
+      return;
+    }
+    setIsRolePreFilled(preFilled);
+    setFormData(prev => ({
+      ...prev,
+      role: role
+    }));
+  }, [searchParams, navigate]);
 
   const handleChange = (e) => {
     setFormData({
@@ -44,6 +61,7 @@ const Register = () => {
 
     if (result.success) {
       setSuccess(result.message);
+      localStorage.removeItem('selectedRole');
       setTimeout(() => {
         navigate('/login');
       }, 2000);
@@ -133,7 +151,8 @@ const Register = () => {
                 id="role"
                 name="role"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                disabled={isRolePreFilled}
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm disabled:bg-gray-100 disabled:cursor-not-allowed"
                 value={formData.role}
                 onChange={handleChange}
               >
