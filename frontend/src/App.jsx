@@ -8,6 +8,7 @@ import Faqs from "./components/Faqs";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import RoleSelection from "./components/RoleSelection";
 
 const HomePage = () => (
   <>
@@ -36,6 +37,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/role-selection" element={<RoleSelection />} />
         <Route path="/register" element={<Register />} />
       </Routes>
     </div>

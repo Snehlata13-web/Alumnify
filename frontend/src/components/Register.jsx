@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth } from '../contexts/AuthContext';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 
 const Register = () => {
+  const [searchParams] = useSearchParams();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,6 +16,16 @@ const Register = () => {
 
   const { register } = useAuth();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const roleFromUrl = searchParams.get('role');
+    if (roleFromUrl && ['student', 'alumni', 'institution'].includes(roleFromUrl)) {
+      setFormData(prev => ({
+        ...prev,
+        role: roleFromUrl
+      }));
+    }
+  }, [searchParams]);
 
   const handleChange = (e) => {
     setFormData({

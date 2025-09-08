@@ -63,7 +63,7 @@ export default function Navbar() {
                       Log in
                     </button>
                   </Link>
-                  <Link to="/register">
+                  <Link to="/role-selection">
                     <button className="px-4 py-1.5 text-sm bg-black text-white rounded-md hover:bg-gray-800 transition">
                       Register
                     </button>
@@ -128,7 +128,7 @@ export default function Navbar() {
                       Log in
                     </button>
                   </Link>
-                  <Link to="/register">
+                  <Link to="/role-selection">
                     <button className="w-full px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800">
                       Register
                     </button>
