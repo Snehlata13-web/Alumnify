@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const authRoutes = require('./routes/auth');
+const profileRoutes = require('./routes/profile');
 
 const app = express();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 
 // Routes
 app.use('/auth', authRoutes);
+app.use('/profile', profileRoutes);
 
 // Connect to MongoDB (clean version)
 mongoose.connect(process.env.MONGO_URI)
