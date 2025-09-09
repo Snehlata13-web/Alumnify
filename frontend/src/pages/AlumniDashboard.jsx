@@ -64,7 +64,7 @@ const AlumniDashboard = () => {
   const fetchProfile = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/profile', {
+      const response = await fetch('https://alumnify-g4p7.onrender.com/profile', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -98,7 +98,7 @@ const AlumniDashboard = () => {
   const fetchStudents = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/profile/students', {
+      const response = await fetch('https://alumnify-g4p7.onrender.com/profile/students', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -134,7 +134,7 @@ const AlumniDashboard = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/profile/alumni', {
+      const response = await fetch('https://alumnify-g4p7.onrender.com/profile/alumni', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

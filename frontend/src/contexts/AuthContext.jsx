@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
 
   const fetchUserInfo = async (token) => {
     try {
-      const response = await fetch('http://localhost:5000/auth/me', {
+      const response = await fetch('https://alumnify-g4p7.onrender.com/auth/me', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -47,7 +47,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const response = await fetch('http://localhost:5000/auth/login', {
+      const response = await fetch('https://alumnify-g4p7.onrender.com/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -71,7 +71,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (name, email, password, role) => {
     try {
-      const response = await fetch('http://localhost:5000/auth/register', {
+      const response = await fetch('https://alumnify-g4p7.onrender.com/auth/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

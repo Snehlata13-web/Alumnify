@@ -65,7 +65,7 @@ const InstitutionDashboard = () => {
   const fetchPendingAlumni = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/profile/institution/pending-alumni', {
+      const response = await fetch('https://alumnify-g4p7.onrender.com/profile/institution/pending-alumni', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -83,7 +83,7 @@ const InstitutionDashboard = () => {
   const fetchApprovedAlumni = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/profile/institution/approved-alumni', {
+      const response = await fetch('https://alumnify-g4p7.onrender.com/profile/institution/approved-alumni', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -101,7 +101,7 @@ const InstitutionDashboard = () => {
   const fetchPendingStudents = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/profile/institution/pending-students', {
+      const response = await fetch('https://alumnify-g4p7.onrender.com/profile/institution/pending-students', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -119,7 +119,7 @@ const InstitutionDashboard = () => {
   const fetchApprovedStudents = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/profile/institution/approved-students', {
+      const response = await fetch('https://alumnify-g4p7.onrender.com/profile/institution/approved-students', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -137,7 +137,7 @@ const InstitutionDashboard = () => {
   const fetchProfile = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/profile', {
+      const response = await fetch('https://alumnify-g4p7.onrender.com/profile', {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -180,7 +180,7 @@ const InstitutionDashboard = () => {
   const handleVerifyAlumni = async (alumniId, action) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/profile/institution/verify-alumni/${alumniId}`, {
+      const response = await fetch(`https://alumnify-g4p7.onrender.com/profile/institution/verify-alumni/${alumniId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -201,7 +201,7 @@ const InstitutionDashboard = () => {
   const handleVerifyStudent = async (studentId, action) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/profile/institution/verify-student/${studentId}`, {
+      const response = await fetch(`https://alumnify-g4p7.onrender.com/profile/institution/verify-student/${studentId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -226,7 +226,7 @@ const InstitutionDashboard = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/profile/institution', {
+      const response = await fetch('https://alumnify-g4p7.onrender.com/profile/institution', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
