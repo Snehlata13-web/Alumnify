@@ -5,8 +5,6 @@ const AlumniProfile = require('../models/AlumniProfile');
 const InstitutionProfile = require('../models/InstitutionProfile');
 const StudentProfile = require('../models/StudentProfile');
 const User = require('../models/User');
-
-// Middleware to verify token
 const verifyToken = (req, res, next) => {
   const token = req.header('Authorization')?.replace('Bearer ', '');
   if (!token) {
@@ -67,7 +65,6 @@ router.post('/alumni', verifyToken, async (req, res) => {
       profilePicture
     } = req.body;
 
-    // Check if institution exists
     const institution = await InstitutionProfile.findOne({ name: collegeName });
     if (!institution) {
       return res.status(400).json({ message: 'Institution not found. Please enter a valid college name.' });
