@@ -14,7 +14,16 @@ import {
   LogOut,
   TrendingUp,
   Star,
-  Briefcase
+  Briefcase,
+  Building,
+  Mail,
+  Hash,
+  Globe,
+  Image,
+  Save,
+  ArrowRight,
+  UserCheck,
+  Target
 } from 'lucide-react';
 
 const StudentDashboard = () => {
@@ -354,145 +363,257 @@ const StudentDashboard = () => {
               )}
 
               <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                    <div className="md:col-span-2">
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Institution Name</label>
-                      <input
-                        type="text"
-                        name="institutionName"
-                        value={formData.institutionName}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                      />
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  {/* Basic Information Section */}
+                  <div className="space-y-6">
+                    <div className="border-b border-gray-200 pb-2">
+                      <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                        <UserCheck className="h-5 w-5 mr-2 text-indigo-600" />
+                        Basic Information
+                      </h3>
                     </div>
 
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
-                      <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                      />
-                    </div>
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                      <div className="space-y-2">
+                        <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                          <Building className="h-4 w-4 mr-2 text-gray-500" />
+                          Institution Name
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="text"
+                            name="institutionName"
+                            value={formData.institutionName}
+                            onChange={handleChange}
+                            required
+                            className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                            placeholder="Enter your institution name"
+                          />
+                        </div>
+                      </div>
 
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Email</label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Batch Year</label>
-                      <input
-                        type="number"
-                        name="batch"
-                        value={formData.batch}
-                        onChange={handleChange}
-                        required
-                        min="1900"
-                        max="2100"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Department</label>
-                      <input
-                        type="text"
-                        name="department"
-                        value={formData.department}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                      />
-                    </div>
-
-                    <div className="md:col-span-2">
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Skills (comma-separated)</label>
-                      <input
-                        type="text"
-                        name="skills"
-                        value={formData.skills.join(', ')}
-                        onChange={handleSkillsChange}
-                        placeholder="e.g. Python, AI, Machine Learning"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                      />
-                    </div>
-
-                    <div className="md:col-span-2">
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Interests (comma-separated)</label>
-                      <input
-                        type="text"
-                        name="interests"
-                        value={formData.interests.join(', ')}
-                        onChange={handleInterestsChange}
-                        placeholder="e.g. Data Science, Cloud Computing"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Location</label>
-                      <input
-                        type="text"
-                        name="location"
-                        value={formData.location}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                      />
-                    </div>
-
-                    <div className="md:col-span-2">
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Mentor Preferences (comma-separated)</label>
-                      <input
-                        type="text"
-                        name="mentorPreferences"
-                        value={formData.mentorPreferences.join(', ')}
-                        onChange={handleMentorPreferencesChange}
-                        placeholder="e.g. IT, AI, Software Development"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                      />
-                    </div>
-
-                    <div className="md:col-span-2">
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Profile Picture URL</label>
-                      <input
-                        type="url"
-                        name="profilePicture"
-                        value={formData.profilePicture}
-                        onChange={handleChange}
-                        placeholder="https://example.com/image.jpg"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                      />
+                      <div className="space-y-2">
+                        <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                          <User className="h-4 w-4 mr-2 text-gray-500" />
+                          Full Name
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="text"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            required
+                            className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                            placeholder="Enter your full name"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
 
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="bg-indigo-600 text-white py-3 px-6 rounded-lg hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-semibold"
-                  >
-                    {loading ? (
-                      <div className="flex items-center justify-center">
-                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                        Updating...
+                  {/* Contact & Academic Section */}
+                  <div className="space-y-6">
+                    <div className="border-b border-gray-200 pb-2">
+                      <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                        <Mail className="h-5 w-5 mr-2 text-indigo-600" />
+                        Contact & Academic
+                      </h3>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                      <div className="space-y-2">
+                        <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                          <Mail className="h-4 w-4 mr-2 text-gray-500" />
+                          Email Address
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                            className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                            placeholder="your.email@domain.com"
+                          />
+                        </div>
                       </div>
-                    ) : (
-                      'Update Profile'
-                    )}
-                  </button>
+
+                      <div className="space-y-2">
+                        <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                          <MapPin className="h-4 w-4 mr-2 text-gray-500" />
+                          Location
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="text"
+                            name="location"
+                            value={formData.location}
+                            onChange={handleChange}
+                            required
+                            className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                            placeholder="City, State/Country"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                          <Calendar className="h-4 w-4 mr-2 text-gray-500" />
+                          Batch Year
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="number"
+                            name="batch"
+                            value={formData.batch}
+                            onChange={handleChange}
+                            required
+                            min="1900"
+                            max="2100"
+                            className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                            placeholder="2024"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                          <GraduationCap className="h-4 w-4 mr-2 text-gray-500" />
+                          Department
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="text"
+                            name="department"
+                            value={formData.department}
+                            onChange={handleChange}
+                            required
+                            className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                            placeholder="Computer Science"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Skills & Interests Section */}
+                  <div className="space-y-6">
+                    <div className="border-b border-gray-200 pb-2">
+                      <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                        <Award className="h-5 w-5 mr-2 text-indigo-600" />
+                        Skills & Interests
+                      </h3>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                      <div className="space-y-2 md:col-span-2">
+                        <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                          <Award className="h-4 w-4 mr-2 text-gray-500" />
+                          Skills (comma-separated)
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="text"
+                            name="skills"
+                            value={formData.skills.join(', ')}
+                            onChange={handleSkillsChange}
+                            placeholder="e.g. Python, JavaScript, React, Machine Learning"
+                            className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                          />
+                        </div>
+                        <p className="text-xs text-gray-500 mt-1">List your technical skills and programming languages</p>
+                      </div>
+
+                      <div className="space-y-2 md:col-span-2">
+                        <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                          <BookOpen className="h-4 w-4 mr-2 text-gray-500" />
+                          Interests (comma-separated)
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="text"
+                            name="interests"
+                            value={formData.interests.join(', ')}
+                            onChange={handleInterestsChange}
+                            placeholder="e.g. Data Science, Cloud Computing, AI, Web Development"
+                            className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                          />
+                        </div>
+                        <p className="text-xs text-gray-500 mt-1">Areas you're interested in learning or exploring</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Mentorship & Media Section */}
+                  <div className="space-y-6">
+                    <div className="border-b border-gray-200 pb-2">
+                      <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                        <Target className="h-5 w-5 mr-2 text-indigo-600" />
+                        Mentorship & Media
+                      </h3>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                      <div className="space-y-2 md:col-span-2">
+                        <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                          <Users className="h-4 w-4 mr-2 text-gray-500" />
+                          Mentor Preferences (comma-separated)
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="text"
+                            name="mentorPreferences"
+                            value={formData.mentorPreferences.join(', ')}
+                            onChange={handleMentorPreferencesChange}
+                            placeholder="e.g. Software Development, Data Science, Career Guidance"
+                            className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                          />
+                        </div>
+                        <p className="text-xs text-gray-500 mt-1">What areas would you like mentorship in?</p>
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                          <Image className="h-4 w-4 mr-2 text-gray-500" />
+                          Profile Picture URL
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="url"
+                            name="profilePicture"
+                            value={formData.profilePicture}
+                            onChange={handleChange}
+                            placeholder="https://example.com/your-photo.jpg"
+                            className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Submit Button */}
+                  <div className="flex justify-end pt-6 border-t border-gray-200">
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="bg-indigo-600 text-white py-3 px-8 rounded-xl hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-semibold flex items-center space-x-2 shadow-lg hover:shadow-xl"
+                    >
+                      {loading ? (
+                        <>
+                          <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                          <span>Updating...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Save className="h-5 w-5" />
+                          <span>Update Profile</span>
+                          <ArrowRight className="h-4 w-4" />
+                        </>
+                      )}
+                    </button>
+                  </div>
                 </form>
               </div>
             </div>
@@ -643,145 +764,257 @@ const StudentDashboard = () => {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              <div className="md:col-span-2">
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Institution Name</label>
-                <input
-                  type="text"
-                  name="institutionName"
-                  value={formData.institutionName}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                />
+          <form onSubmit={handleSubmit} className="space-y-8">
+            {/* Basic Information Section */}
+            <div className="space-y-6">
+              <div className="border-b border-gray-200 pb-2">
+                <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                  <UserCheck className="h-5 w-5 mr-2 text-indigo-600" />
+                  Basic Information
+                </h3>
               </div>
 
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Full Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                />
-              </div>
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <div className="space-y-2">
+                  <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                    <Building className="h-4 w-4 mr-2 text-gray-500" />
+                    Institution Name
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      name="institutionName"
+                      value={formData.institutionName}
+                      onChange={handleChange}
+                      required
+                      className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                      placeholder="Enter your institution name"
+                    />
+                  </div>
+                </div>
 
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Batch Year</label>
-                <input
-                  type="number"
-                  name="batch"
-                  value={formData.batch}
-                  onChange={handleChange}
-                  required
-                  min="1900"
-                  max="2100"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Department</label>
-                <input
-                  type="text"
-                  name="department"
-                  value={formData.department}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                />
-              </div>
-
-              <div className="md:col-span-2">
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Skills (comma-separated)</label>
-                <input
-                  type="text"
-                  name="skills"
-                  value={formData.skills.join(', ')}
-                  onChange={handleSkillsChange}
-                  placeholder="e.g. Python, AI, Machine Learning"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                />
-              </div>
-
-              <div className="md:col-span-2">
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Interests (comma-separated)</label>
-                <input
-                  type="text"
-                  name="interests"
-                  value={formData.interests.join(', ')}
-                  onChange={handleInterestsChange}
-                  placeholder="e.g. Data Science, Cloud Computing"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Location</label>
-                <input
-                  type="text"
-                  name="location"
-                  value={formData.location}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                />
-              </div>
-
-              <div className="md:col-span-2">
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Mentor Preferences (comma-separated)</label>
-                <input
-                  type="text"
-                  name="mentorPreferences"
-                  value={formData.mentorPreferences.join(', ')}
-                  onChange={handleMentorPreferencesChange}
-                  placeholder="e.g. IT, AI, Software Development"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                />
-              </div>
-
-              <div className="md:col-span-2">
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Profile Picture URL</label>
-                <input
-                  type="url"
-                  name="profilePicture"
-                  value={formData.profilePicture}
-                  onChange={handleChange}
-                  placeholder="https://example.com/image.jpg"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                />
+                <div className="space-y-2">
+                  <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                    <User className="h-4 w-4 mr-2 text-gray-500" />
+                    Full Name
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                      placeholder="Enter your full name"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-indigo-600 text-white py-3 px-4 rounded-lg hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-semibold"
-            >
-              {loading ? (
-                <div className="flex items-center justify-center">
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                  Submitting...
+            {/* Contact & Academic Section */}
+            <div className="space-y-6">
+              <div className="border-b border-gray-200 pb-2">
+                <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                  <Mail className="h-5 w-5 mr-2 text-indigo-600" />
+                  Contact & Academic
+                </h3>
+              </div>
+
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <div className="space-y-2">
+                  <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                    <Mail className="h-4 w-4 mr-2 text-gray-500" />
+                    Email Address
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                      placeholder="your.email@domain.com"
+                    />
+                  </div>
                 </div>
-              ) : (
-                'Submit Profile'
-              )}
-            </button>
+
+                <div className="space-y-2">
+                  <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                    <MapPin className="h-4 w-4 mr-2 text-gray-500" />
+                    Location
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      name="location"
+                      value={formData.location}
+                      onChange={handleChange}
+                      required
+                      className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                      placeholder="City, State/Country"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                    <Calendar className="h-4 w-4 mr-2 text-gray-500" />
+                    Batch Year
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="number"
+                      name="batch"
+                      value={formData.batch}
+                      onChange={handleChange}
+                      required
+                      min="1900"
+                      max="2100"
+                      className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                      placeholder="2024"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                    <GraduationCap className="h-4 w-4 mr-2 text-gray-500" />
+                    Department
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      name="department"
+                      value={formData.department}
+                      onChange={handleChange}
+                      required
+                      className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                      placeholder="Computer Science"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Skills & Interests Section */}
+            <div className="space-y-6">
+              <div className="border-b border-gray-200 pb-2">
+                <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                  <Award className="h-5 w-5 mr-2 text-indigo-600" />
+                  Skills & Interests
+                </h3>
+              </div>
+
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <div className="space-y-2 md:col-span-2">
+                  <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                    <Award className="h-4 w-4 mr-2 text-gray-500" />
+                    Skills (comma-separated)
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      name="skills"
+                      value={formData.skills.join(', ')}
+                      onChange={handleSkillsChange}
+                      placeholder="e.g. Python, JavaScript, React, Machine Learning"
+                      className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                    />
+                  </div>
+                  <p className="text-xs text-gray-500 mt-1">List your technical skills and programming languages</p>
+                </div>
+
+                <div className="space-y-2 md:col-span-2">
+                  <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                    <BookOpen className="h-4 w-4 mr-2 text-gray-500" />
+                    Interests (comma-separated)
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      name="interests"
+                      value={formData.interests.join(', ')}
+                      onChange={handleInterestsChange}
+                      placeholder="e.g. Data Science, Cloud Computing, AI, Web Development"
+                      className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                    />
+                  </div>
+                  <p className="text-xs text-gray-500 mt-1">Areas you're interested in learning or exploring</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Mentorship & Media Section */}
+            <div className="space-y-6">
+              <div className="border-b border-gray-200 pb-2">
+                <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                  <Target className="h-5 w-5 mr-2 text-indigo-600" />
+                  Mentorship & Media
+                </h3>
+              </div>
+
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <div className="space-y-2 md:col-span-2">
+                  <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                    <Users className="h-4 w-4 mr-2 text-gray-500" />
+                    Mentor Preferences (comma-separated)
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      name="mentorPreferences"
+                      value={formData.mentorPreferences.join(', ')}
+                      onChange={handleMentorPreferencesChange}
+                      placeholder="e.g. Software Development, Data Science, Career Guidance"
+                      className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                    />
+                  </div>
+                  <p className="text-xs text-gray-500 mt-1">What areas would you like mentorship in?</p>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                    <Image className="h-4 w-4 mr-2 text-gray-500" />
+                    Profile Picture URL
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="url"
+                      name="profilePicture"
+                      value={formData.profilePicture}
+                      onChange={handleChange}
+                      placeholder="https://example.com/your-photo.jpg"
+                      className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Submit Button */}
+            <div className="flex justify-end pt-6 border-t border-gray-200">
+              <button
+                type="submit"
+                disabled={loading}
+                className="bg-indigo-600 text-white py-3 px-8 rounded-xl hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-semibold flex items-center space-x-2 shadow-lg hover:shadow-xl"
+              >
+                {loading ? (
+                  <>
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                    <span>Submitting...</span>
+                  </>
+                ) : (
+                  <>
+                    <Save className="h-5 w-5" />
+                    <span>Submit Profile</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </>
+                )}
+              </button>
+            </div>
           </form>
         </div>
       </div>

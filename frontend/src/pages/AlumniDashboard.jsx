@@ -15,7 +15,16 @@ import {
   LogOut,
   Edit,
   CheckCircle,
-  XCircle
+  XCircle,
+  Building,
+  Mail,
+  Hash,
+  Globe,
+  Image,
+  Save,
+  ArrowRight,
+  Target,
+  BookOpen
 } from 'lucide-react';
 
 const AlumniDashboard = () => {
@@ -361,163 +370,271 @@ const AlumniDashboard = () => {
               )}
 
               <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                    <div className="md:col-span-2">
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">College Name</label>
-                      <input
-                        type="text"
-                        name="collegeName"
-                        value={formData.collegeName}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                      />
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  {/* Basic Information Section */}
+                  <div className="space-y-6">
+                    <div className="border-b border-gray-200 pb-2">
+                      <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                        <Building className="h-5 w-5 mr-2 text-indigo-600" />
+                        Basic Information
+                      </h3>
                     </div>
 
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Graduation Year</label>
-                      <input
-                        type="number"
-                        name="graduationYear"
-                        value={formData.graduationYear}
-                        onChange={handleChange}
-                        required
-                        min="1900"
-                        max={new Date().getFullYear()}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Current Company</label>
-                      <input
-                        type="text"
-                        name="currentCompany"
-                        value={formData.currentCompany}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Department</label>
-                      <input
-                        type="text"
-                        name="department"
-                        value={formData.department}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Industry</label>
-                      <input
-                        type="text"
-                        name="industry"
-                        value={formData.industry}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Location</label>
-                      <input
-                        type="text"
-                        name="location"
-                        value={formData.location}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                      />
-                    </div>
-
-                    <div className="md:col-span-2">
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Skills (comma-separated)</label>
-                      <input
-                        type="text"
-                        name="skills"
-                        value={formData.skills.join(', ')}
-                        onChange={handleSkillsChange}
-                        placeholder="e.g. JavaScript, React, Node.js"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">LinkedIn Profile</label>
-                      <input
-                        type="url"
-                        name="linkedin"
-                        value={formData.linkedin}
-                        onChange={handleChange}
-                        placeholder="https://linkedin.com/in/yourprofile"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-semibold text-gray-700 mb-2">Profile Picture URL</label>
-                      <input
-                        type="url"
-                        name="profilePicture"
-                        value={formData.profilePicture}
-                        onChange={handleChange}
-                        placeholder="https://example.com/image.jpg"
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="flex items-center space-x-6">
-                    <div className="flex items-center">
-                      <input
-                        id="mentorship"
-                        name="availableForMentorship"
-                        type="checkbox"
-                        checked={formData.availableForMentorship}
-                        onChange={handleChange}
-                        className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                      />
-                      <label htmlFor="mentorship" className="ml-2 block text-sm text-gray-900">
-                        Available for Mentorship
-                      </label>
-                    </div>
-
-                    <div className="flex items-center">
-                      <input
-                        id="donation"
-                        name="availableForDonation"
-                        type="checkbox"
-                        checked={formData.availableForDonation}
-                        onChange={handleChange}
-                        className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                      />
-                      <label htmlFor="donation" className="ml-2 block text-sm text-gray-900">
-                        Available for Donation
-                      </label>
-                    </div>
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="bg-indigo-600 text-white py-3 px-6 rounded-lg hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-semibold"
-                  >
-                    {loading ? (
-                      <div className="flex items-center justify-center">
-                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                        Updating...
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                      <div className="space-y-2 md:col-span-2">
+                        <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                          <Building className="h-4 w-4 mr-2 text-gray-500" />
+                          College Name
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="text"
+                            name="collegeName"
+                            value={formData.collegeName}
+                            onChange={handleChange}
+                            required
+                            className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                            placeholder="Enter your college name"
+                          />
+                        </div>
                       </div>
-                    ) : (
-                      'Update Profile'
-                    )}
-                  </button>
+
+                      <div className="space-y-2">
+                        <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                          <Calendar className="h-4 w-4 mr-2 text-gray-500" />
+                          Graduation Year
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="number"
+                            name="graduationYear"
+                            value={formData.graduationYear}
+                            onChange={handleChange}
+                            required
+                            min="1900"
+                            max={new Date().getFullYear()}
+                            className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                            placeholder="2020"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                          <GraduationCap className="h-4 w-4 mr-2 text-gray-500" />
+                          Department
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="text"
+                            name="department"
+                            value={formData.department}
+                            onChange={handleChange}
+                            required
+                            className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                            placeholder="Computer Science"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Professional Information Section */}
+                  <div className="space-y-6">
+                    <div className="border-b border-gray-200 pb-2">
+                      <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                        <Briefcase className="h-5 w-5 mr-2 text-indigo-600" />
+                        Professional Information
+                      </h3>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                      <div className="space-y-2">
+                        <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                          <Briefcase className="h-4 w-4 mr-2 text-gray-500" />
+                          Current Company
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="text"
+                            name="currentCompany"
+                            value={formData.currentCompany}
+                            onChange={handleChange}
+                            required
+                            className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                            placeholder="Company Name"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                          <Target className="h-4 w-4 mr-2 text-gray-500" />
+                          Industry
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="text"
+                            name="industry"
+                            value={formData.industry}
+                            onChange={handleChange}
+                            required
+                            className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                            placeholder="Technology"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                          <MapPin className="h-4 w-4 mr-2 text-gray-500" />
+                          Location
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="text"
+                            name="location"
+                            value={formData.location}
+                            onChange={handleChange}
+                            required
+                            className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                            placeholder="City, State/Country"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                          <Globe className="h-4 w-4 mr-2 text-gray-500" />
+                          LinkedIn Profile
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="url"
+                            name="linkedin"
+                            value={formData.linkedin}
+                            onChange={handleChange}
+                            placeholder="https://linkedin.com/in/yourprofile"
+                            className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Skills & Expertise Section */}
+                  <div className="space-y-6">
+                    <div className="border-b border-gray-200 pb-2">
+                      <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                        <Award className="h-5 w-5 mr-2 text-indigo-600" />
+                        Skills & Expertise
+                      </h3>
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                        <Award className="h-4 w-4 mr-2 text-gray-500" />
+                        Skills (comma-separated)
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="text"
+                          name="skills"
+                          value={formData.skills.join(', ')}
+                          onChange={handleSkillsChange}
+                          placeholder="e.g. JavaScript, React, Node.js, Python, Machine Learning"
+                          className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                        />
+                      </div>
+                      <p className="text-xs text-gray-500 mt-1">List your technical skills, programming languages, and expertise areas</p>
+                    </div>
+                  </div>
+
+                  {/* Media & Availability Section */}
+                  <div className="space-y-6">
+                    <div className="border-b border-gray-200 pb-2">
+                      <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                        <Image className="h-5 w-5 mr-2 text-indigo-600" />
+                        Media & Availability
+                      </h3>
+                    </div>
+
+                    <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                      <div className="space-y-2">
+                        <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                          <Image className="h-4 w-4 mr-2 text-gray-500" />
+                          Profile Picture URL
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="url"
+                            name="profilePicture"
+                            value={formData.profilePicture}
+                            onChange={handleChange}
+                            placeholder="https://example.com/your-photo.jpg"
+                            className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                          />
+                        </div>
+                      </div>
+
+                      <div className="space-y-4">
+                        <label className="block text-sm font-semibold text-gray-700">Availability Options</label>
+                        <div className="space-y-3">
+                          <div className="flex items-center">
+                            <input
+                              id="mentorship"
+                              name="availableForMentorship"
+                              type="checkbox"
+                              checked={formData.availableForMentorship}
+                              onChange={handleChange}
+                              className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                            />
+                            <label htmlFor="mentorship" className="ml-3 block text-sm text-gray-900 flex items-center">
+                              <Users className="h-4 w-4 mr-2 text-blue-600" />
+                              Available for Mentorship
+                            </label>
+                          </div>
+
+                          <div className="flex items-center">
+                            <input
+                              id="donation"
+                              name="availableForDonation"
+                              type="checkbox"
+                              checked={formData.availableForDonation}
+                              onChange={handleChange}
+                              className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                            />
+                            <label htmlFor="donation" className="ml-3 block text-sm text-gray-900 flex items-center">
+                              <Star className="h-4 w-4 mr-2 text-yellow-600" />
+                              Available for Donation
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Submit Button */}
+                  <div className="flex justify-end pt-6 border-t border-gray-200">
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="bg-indigo-600 text-white py-3 px-8 rounded-xl hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-semibold flex items-center space-x-2 shadow-lg hover:shadow-xl"
+                    >
+                      {loading ? (
+                        <>
+                          <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                          <span>Updating...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Save className="h-5 w-5" />
+                          <span>Update Profile</span>
+                          <ArrowRight className="h-4 w-4" />
+                        </>
+                      )}
+                    </button>
+                  </div>
                 </form>
               </div>
             </div>
@@ -665,163 +782,271 @@ const AlumniDashboard = () => {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              <div className="md:col-span-2">
-                <label className="block text-sm font-semibold text-gray-700 mb-2">College Name</label>
-                <input
-                  type="text"
-                  name="collegeName"
-                  value={formData.collegeName}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                />
+          <form onSubmit={handleSubmit} className="space-y-8">
+            {/* Basic Information Section */}
+            <div className="space-y-6">
+              <div className="border-b border-gray-200 pb-2">
+                <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                  <Building className="h-5 w-5 mr-2 text-indigo-600" />
+                  Basic Information
+                </h3>
               </div>
 
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Graduation Year</label>
-                <input
-                  type="number"
-                  name="graduationYear"
-                  value={formData.graduationYear}
-                  onChange={handleChange}
-                  required
-                  min="1900"
-                  max={new Date().getFullYear()}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Current Company</label>
-                <input
-                  type="text"
-                  name="currentCompany"
-                  value={formData.currentCompany}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Department</label>
-                <input
-                  type="text"
-                  name="department"
-                  value={formData.department}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Industry</label>
-                <input
-                  type="text"
-                  name="industry"
-                  value={formData.industry}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Location</label>
-                <input
-                  type="text"
-                  name="location"
-                  value={formData.location}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                />
-              </div>
-
-              <div className="md:col-span-2">
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Skills (comma-separated)</label>
-                <input
-                  type="text"
-                  name="skills"
-                  value={formData.skills.join(', ')}
-                  onChange={handleSkillsChange}
-                  placeholder="e.g. JavaScript, React, Node.js"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">LinkedIn Profile</label>
-                <input
-                  type="url"
-                  name="linkedin"
-                  value={formData.linkedin}
-                  onChange={handleChange}
-                  placeholder="https://linkedin.com/in/yourprofile"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Profile Picture URL</label>
-                <input
-                  type="url"
-                  name="profilePicture"
-                  value={formData.profilePicture}
-                  onChange={handleChange}
-                  placeholder="https://example.com/image.jpg"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                />
-              </div>
-            </div>
-
-            <div className="flex items-center space-x-6">
-              <div className="flex items-center">
-                <input
-                  id="mentorship"
-                  name="availableForMentorship"
-                  type="checkbox"
-                  checked={formData.availableForMentorship}
-                  onChange={handleChange}
-                  className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                />
-                <label htmlFor="mentorship" className="ml-2 block text-sm text-gray-900">
-                  Available for Mentorship
-                </label>
-              </div>
-
-              <div className="flex items-center">
-                <input
-                  id="donation"
-                  name="availableForDonation"
-                  type="checkbox"
-                  checked={formData.availableForDonation}
-                  onChange={handleChange}
-                  className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-                />
-                <label htmlFor="donation" className="ml-2 block text-sm text-gray-900">
-                  Available for Donation
-                </label>
-              </div>
-            </div>
-
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full bg-indigo-600 text-white py-3 px-4 rounded-lg hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-semibold"
-            >
-              {loading ? (
-                <div className="flex items-center justify-center">
-                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                  Submitting...
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <div className="space-y-2 md:col-span-2">
+                  <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                    <Building className="h-4 w-4 mr-2 text-gray-500" />
+                    College Name
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      name="collegeName"
+                      value={formData.collegeName}
+                      onChange={handleChange}
+                      required
+                      className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                      placeholder="Enter your college name"
+                    />
+                  </div>
                 </div>
-              ) : (
-                'Submit Profile'
-              )}
-            </button>
+
+                <div className="space-y-2">
+                  <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                    <Calendar className="h-4 w-4 mr-2 text-gray-500" />
+                    Graduation Year
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="number"
+                      name="graduationYear"
+                      value={formData.graduationYear}
+                      onChange={handleChange}
+                      required
+                      min="1900"
+                      max={new Date().getFullYear()}
+                      className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                      placeholder="2020"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                    <GraduationCap className="h-4 w-4 mr-2 text-gray-500" />
+                    Department
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      name="department"
+                      value={formData.department}
+                      onChange={handleChange}
+                      required
+                      className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                      placeholder="Computer Science"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Professional Information Section */}
+            <div className="space-y-6">
+              <div className="border-b border-gray-200 pb-2">
+                <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                  <Briefcase className="h-5 w-5 mr-2 text-indigo-600" />
+                  Professional Information
+                </h3>
+              </div>
+
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <div className="space-y-2">
+                  <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                    <Briefcase className="h-4 w-4 mr-2 text-gray-500" />
+                    Current Company
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      name="currentCompany"
+                      value={formData.currentCompany}
+                      onChange={handleChange}
+                      required
+                      className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                      placeholder="Company Name"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                    <Target className="h-4 w-4 mr-2 text-gray-500" />
+                    Industry
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      name="industry"
+                      value={formData.industry}
+                      onChange={handleChange}
+                      required
+                      className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                      placeholder="Technology"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                    <MapPin className="h-4 w-4 mr-2 text-gray-500" />
+                    Location
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="text"
+                      name="location"
+                      value={formData.location}
+                      onChange={handleChange}
+                      required
+                      className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                      placeholder="City, State/Country"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                    <Globe className="h-4 w-4 mr-2 text-gray-500" />
+                    LinkedIn Profile
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="url"
+                      name="linkedin"
+                      value={formData.linkedin}
+                      onChange={handleChange}
+                      placeholder="https://linkedin.com/in/yourprofile"
+                      className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Skills & Expertise Section */}
+            <div className="space-y-6">
+              <div className="border-b border-gray-200 pb-2">
+                <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                  <Award className="h-5 w-5 mr-2 text-indigo-600" />
+                  Skills & Expertise
+                </h3>
+              </div>
+
+              <div className="space-y-2">
+                <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                  <Award className="h-4 w-4 mr-2 text-gray-500" />
+                  Skills (comma-separated)
+                </label>
+                <div className="relative">
+                  <input
+                    type="text"
+                    name="skills"
+                    value={formData.skills.join(', ')}
+                    onChange={handleSkillsChange}
+                    placeholder="e.g. JavaScript, React, Node.js, Python, Machine Learning"
+                    className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                  />
+                </div>
+                <p className="text-xs text-gray-500 mt-1">List your technical skills, programming languages, and expertise areas</p>
+              </div>
+            </div>
+
+            {/* Media & Availability Section */}
+            <div className="space-y-6">
+              <div className="border-b border-gray-200 pb-2">
+                <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                  <Image className="h-5 w-5 mr-2 text-indigo-600" />
+                  Media & Availability
+                </h3>
+              </div>
+
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                <div className="space-y-2">
+                  <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                    <Image className="h-4 w-4 mr-2 text-gray-500" />
+                    Profile Picture URL
+                  </label>
+                  <div className="relative">
+                    <input
+                      type="url"
+                      name="profilePicture"
+                      value={formData.profilePicture}
+                      onChange={handleChange}
+                      placeholder="https://example.com/your-photo.jpg"
+                      className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <label className="block text-sm font-semibold text-gray-700">Availability Options</label>
+                  <div className="space-y-3">
+                    <div className="flex items-center">
+                      <input
+                        id="mentorship"
+                        name="availableForMentorship"
+                        type="checkbox"
+                        checked={formData.availableForMentorship}
+                        onChange={handleChange}
+                        className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                      />
+                      <label htmlFor="mentorship" className="ml-3 block text-sm text-gray-900 flex items-center">
+                        <Users className="h-4 w-4 mr-2 text-blue-600" />
+                        Available for Mentorship
+                      </label>
+                    </div>
+
+                    <div className="flex items-center">
+                      <input
+                        id="donation"
+                        name="availableForDonation"
+                        type="checkbox"
+                        checked={formData.availableForDonation}
+                        onChange={handleChange}
+                        className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+                      />
+                      <label htmlFor="donation" className="ml-3 block text-sm text-gray-900 flex items-center">
+                        <Star className="h-4 w-4 mr-2 text-yellow-600" />
+                        Available for Donation
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Submit Button */}
+            <div className="flex justify-end pt-6 border-t border-gray-200">
+              <button
+                type="submit"
+                disabled={loading}
+                className="bg-indigo-600 text-white py-3 px-8 rounded-xl hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-semibold flex items-center space-x-2 shadow-lg hover:shadow-xl"
+              >
+                {loading ? (
+                  <>
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                    <span>Submitting...</span>
+                  </>
+                ) : (
+                  <>
+                    <Save className="h-5 w-5" />
+                    <span>Submit Profile</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </>
+                )}
+              </button>
+            </div>
           </form>
         </div>
       </div>

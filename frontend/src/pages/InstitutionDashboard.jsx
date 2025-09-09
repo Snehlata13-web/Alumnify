@@ -15,7 +15,14 @@ import {
   Building,
   Mail,
   MapPin,
-  Plus
+  Plus,
+  FileText,
+  Hash,
+  Globe,
+  BookOpen,
+  Image,
+  Save,
+  ArrowRight
 } from 'lucide-react';
 
 const InstitutionDashboard = () => {
@@ -570,95 +577,206 @@ const InstitutionDashboard = () => {
             )}
 
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Institution ID</label>
-                    <input
-                      type="text"
-                      name="institutionId"
-                      value={formData.institutionId}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                    />
+              <form onSubmit={handleSubmit} className="space-y-8">
+                {/* Basic Information Section */}
+                <div className="space-y-6">
+                  <div className="border-b border-gray-200 pb-2">
+                    <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                      <Building className="h-5 w-5 mr-2 text-indigo-600" />
+                      Basic Information
+                    </h3>
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Institution Name</label>
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                    />
-                  </div>
+                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                    <div className="space-y-2">
+                      <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                        <Hash className="h-4 w-4 mr-2 text-gray-500" />
+                        Institution ID
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="text"
+                          name="institutionId"
+                          value={formData.institutionId}
+                          onChange={handleChange}
+                          required
+                          className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                          placeholder="Enter institution ID"
+                        />
+                      </div>
+                    </div>
 
-                  <div className="md:col-span-2">
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Address</label>
-                    <textarea
-                      name="address"
-                      value={formData.address}
-                      onChange={handleChange}
-                      required
-                      rows="3"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                    />
-                  </div>
-
-                  <div className="md:col-span-2">
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Departments (comma-separated)</label>
-                    <input
-                      type="text"
-                      name="departments"
-                      value={formData.departments.join(', ')}
-                      onChange={handleDepartmentsChange}
-                      placeholder="e.g. CSE, ECE, Mathematics"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Contact Email</label>
-                    <input
-                      type="email"
-                      name="contactEmail"
-                      value={formData.contactEmail}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-semibold text-gray-700 mb-2">Profile Picture URL</label>
-                    <input
-                      type="url"
-                      name="profilePicture"
-                      value={formData.profilePicture}
-                      onChange={handleChange}
-                      placeholder="https://example.com/image.jpg"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors"
-                    />
+                    <div className="space-y-2">
+                      <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                        <Building className="h-4 w-4 mr-2 text-gray-500" />
+                        Institution Name
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="text"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          required
+                          className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                          placeholder="Enter institution name"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="bg-indigo-600 text-white py-3 px-6 rounded-lg hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-semibold"
-                >
-                  {loading ? (
-                    <div className="flex items-center justify-center">
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                      Updating...
+                {/* Contact & Location Section */}
+                <div className="space-y-6">
+                  <div className="border-b border-gray-200 pb-2">
+                    <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                      <Mail className="h-5 w-5 mr-2 text-indigo-600" />
+                      Contact & Location
+                    </h3>
+                  </div>
+
+                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                    <div className="space-y-2">
+                      <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                        <Mail className="h-4 w-4 mr-2 text-gray-500" />
+                        Contact Email
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="email"
+                          name="contactEmail"
+                          value={formData.contactEmail}
+                          onChange={handleChange}
+                          required
+                          className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                          placeholder="contact@institution.edu"
+                        />
+                      </div>
                     </div>
-                  ) : (
-                    'Update Profile'
-                  )}
-                </button>
+
+                    <div className="space-y-2 md:col-span-2">
+                      <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                        <MapPin className="h-4 w-4 mr-2 text-gray-500" />
+                        Address
+                      </label>
+                      <div className="relative">
+                        <textarea
+                          name="address"
+                          value={formData.address}
+                          onChange={handleChange}
+                          required
+                          rows="3"
+                          className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white resize-none"
+                          placeholder="Enter complete institution address"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Academic Information Section */}
+                <div className="space-y-6">
+                  <div className="border-b border-gray-200 pb-2">
+                    <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                      <BookOpen className="h-5 w-5 mr-2 text-indigo-600" />
+                      Academic Information
+                    </h3>
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                      <GraduationCap className="h-4 w-4 mr-2 text-gray-500" />
+                      Departments (comma-separated)
+                    </label>
+                    <div className="relative">
+                      <input
+                        type="text"
+                        name="departments"
+                        value={formData.departments.join(', ')}
+                        onChange={handleDepartmentsChange}
+                        placeholder="e.g. Computer Science, Electrical Engineering, Mathematics"
+                        className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                      />
+                    </div>
+                    <p className="text-xs text-gray-500 mt-1">Separate multiple departments with commas</p>
+                  </div>
+                </div>
+
+                {/* Media & Events Section */}
+                <div className="space-y-6">
+                  <div className="border-b border-gray-200 pb-2">
+                    <h3 className="text-lg font-semibold text-gray-900 flex items-center">
+                      <Image className="h-5 w-5 mr-2 text-indigo-600" />
+                      Media & Events
+                    </h3>
+                  </div>
+
+                  <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                    <div className="space-y-2">
+                      <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                        <Image className="h-4 w-4 mr-2 text-gray-500" />
+                        Profile Picture URL
+                      </label>
+                      <div className="relative">
+                        <input
+                          type="url"
+                          name="profilePicture"
+                          value={formData.profilePicture}
+                          onChange={handleChange}
+                          placeholder="https://example.com/institution-logo.jpg"
+                          className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="block text-sm font-semibold text-gray-700 flex items-center">
+                        <Calendar className="h-4 w-4 mr-2 text-gray-500" />
+                        Events (JSON format)
+                      </label>
+                      <div className="relative">
+                        <textarea
+                          name="events"
+                          value={JSON.stringify(formData.events, null, 2)}
+                          onChange={(e) => {
+                            try {
+                              const events = JSON.parse(e.target.value);
+                              setFormData(prev => ({ ...prev, events }));
+                            } catch (error) {
+                              // Invalid JSON, keep current value
+                            }
+                          }}
+                          placeholder='[{"title": "Annual Alumni Meet", "description": "Annual gathering of alumni", "date": "2024-12-25"}]'
+                          rows="3"
+                          className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-gray-50 focus:bg-white font-mono text-sm resize-none"
+                        />
+                      </div>
+                      <p className="text-xs text-gray-500 mt-1">Enter events as JSON array with title, description, and date fields</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Submit Button */}
+                <div className="flex justify-end pt-6 border-t border-gray-200">
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="bg-indigo-600 text-white py-3 px-8 rounded-xl hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 font-semibold flex items-center space-x-2 shadow-lg hover:shadow-xl"
+                  >
+                    {loading ? (
+                      <>
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+                        <span>Updating...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Save className="h-5 w-5" />
+                        <span>Update Profile</span>
+                        <ArrowRight className="h-4 w-4" />
+                      </>
+                    )}
+                  </button>
+                </div>
               </form>
             </div>
           </div>
