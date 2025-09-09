@@ -360,6 +360,11 @@ router.get('/institution/approved-students', verifyToken, async (req, res) => {
       return res.status(403).json({ message: 'Access denied' });
     }
 
+    const institutionProfile = await InstitutionProfile.findOne({ user: req.userId });
+    if (!institutionProfile) {
+      return res.status(404).json({ message: 'Institution profile not found' });
+    }
+
     const approvedStudents = await StudentProfile.find({
       institutionName: institutionProfile.name,
       verificationStatus: 'verified'
@@ -380,9 +385,18 @@ router.post('/institution/verify-student/:studentId', verifyToken, async (req, r
       return res.status(403).json({ message: 'Access denied' });
     }
 
+    const institutionProfile = await InstitutionProfile.findOne({ user: req.userId });
+    if (!institutionProfile) {
+      return res.status(404).json({ message: 'Institution profile not found' });
+    }
+
     const studentProfile = await StudentProfile.findById(req.params.studentId);
     if (!studentProfile) {
       return res.status(404).json({ message: 'Student profile not found' });
+    }
+
+    if (studentProfile.institutionName !== institutionProfile.name) {
+      return res.status(403).json({ message: 'Access denied' });
     }
 
     if (action === 'approve') {
